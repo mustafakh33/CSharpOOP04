@@ -38,9 +38,14 @@ namespace CSharpOOP02
         }
         public override void PrintShipment()
         {
-            base.PrintShipment();
-
+            Console.WriteLine("Express Shipment");
+            Console.WriteLine($"  TrackingCode : {TrackingCode}");
+            Console.WriteLine($"  Description  : {Description}");
+            Console.WriteLine($"  Weight       : {Weight}");
+            Console.WriteLine($"  DeliveryFee  : {DeliveryFee:C}");
             Console.WriteLine($"  ExtraFee     : {ExtraFee:C}");
+            Console.WriteLine($"  Destination  : {Destination.GetFullAddress()}");
+            Console.WriteLine($"  EstimatedCost: {EstimatedCost:C}");
 
         }
     }

@@ -58,10 +58,15 @@ namespace CSharpOOP02
         // PrintShipment() ← Country + CustomsFee
         public override void PrintShipment()
         {
-            base.PrintShipment();
-
+            Console.WriteLine("International Shipment");
+            Console.WriteLine($"  TrackingCode       : {TrackingCode}");
+            Console.WriteLine($"  Description        : {Description}");
+            Console.WriteLine($"  Weight             : {Weight}");
+            Console.WriteLine($"  DeliveryFee        : {DeliveryFee:C}");
             Console.WriteLine($"  DestinationCountry : {DestinationCountry}");
             Console.WriteLine($"  CustomsFee         : {CustomsFee:C}");
+            Console.WriteLine($"  Destination        : {Destination.GetFullAddress()}");
+            Console.WriteLine($"  EstimatedCost      : {EstimatedCost:C}");
 
         }
     }

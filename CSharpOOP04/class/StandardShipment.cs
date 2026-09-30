@@ -11,9 +11,22 @@ namespace CSharpOOP02
         public StandardShipment(string trackingCode, string description, decimal weight,  decimal deliveryFee, DeliveryAddress destination) : base(trackingCode, description, weight, deliveryFee, destination)
         {
         }
+        public override decimal EstimatedCost
+        {
+            get
+            {
+                return DeliveryFee + (Weight * 5m);
+            }
+        }
         public override void PrintShipment()
         {
-            base.PrintShipment();
+            Console.WriteLine("Standard Shipment");
+            Console.WriteLine($"  TrackingCode : {TrackingCode}");
+            Console.WriteLine($"  Description  : {Description}");
+            Console.WriteLine($"  Weight       : {Weight}");
+            Console.WriteLine($"  DeliveryFee  : {DeliveryFee:C}");
+            Console.WriteLine($"  Destination  : {Destination.GetFullAddress()}");
+            Console.WriteLine($"  EstimatedCost: {EstimatedCost:C}");
         }
     }
 }
