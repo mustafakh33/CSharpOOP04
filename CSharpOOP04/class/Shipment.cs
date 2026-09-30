@@ -105,13 +105,7 @@ namespace CSharpOOP02.@class
         }
 
         // EstimatedCost: calculated on request (not stored)
-        public virtual decimal EstimatedCost
-        {
-            get
-            {
-                return DeliveryFee + (Weight * 5m);
-            }
-        }
+        public abstract decimal EstimatedCost { get; }
 
         // UpdateDeliveryFee(decimal newFee): updates the fee only when newFee is greater than 0.
         public void UpdateDeliveryFee(decimal newFee)
@@ -123,15 +117,7 @@ namespace CSharpOOP02.@class
         }
 
         // PrintShipment(): prints all shipment information, including the estimated cost.
-        public virtual void PrintShipment()
-        {
-            Console.WriteLine($"  TrackingCode : {TrackingCode}");
-            Console.WriteLine($"  Description  : {Description}");
-            Console.WriteLine($"  Weight       : {Weight}");
-            Console.WriteLine($"  DeliveryFee  : {DeliveryFee:C}");
-            Console.WriteLine($"  Destination :  {Destination.GetFullAddress()}");
-            Console.WriteLine($"  EstimatedCost: {EstimatedCost:C}");
-        }
+        public abstract void PrintShipment();
 
     }
 }
