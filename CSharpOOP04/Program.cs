@@ -23,6 +23,10 @@
 
             #endregion
             #endregion
+
+            #region Part 02 — Practical
+
+            #endregion
         }
     }
 }
