@@ -1,5 +1,6 @@
 ﻿using CSharpOOP02.@class;
 using CSharpOOP03;
+using CSharpOOP04.Interface;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -100,7 +101,7 @@ namespace CSharpOOP02.@class
             }
             for (int i = 0; i < _shipments.Length; i++)
             {
-                if (_shipments[i].TrackingCode == trackingCode)
+                if (_shipments[i] != null && _shipments[i].TrackingCode == trackingCode)
                 {
                     _shipments[i] = null;
                     return true;
@@ -119,6 +120,17 @@ namespace CSharpOOP02.@class
                     Console.WriteLine($"Shipment {i + 1}:");
                     _shipments[i].PrintShipment();
                     Console.WriteLine();
+                }
+            }
+        }
+
+        public void PrintTrackingStatuses()
+        {
+            foreach (Shipment? shipment in _shipments)
+            {
+                if (shipment is ITrackable trackable)
+                {
+                    Console.WriteLine(trackable.GetTrackingStatus());
                 }
             }
         }

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace CSharpOOP02
 {
-    public class ExpressShipment : Shipment, ITrackable
+    public class ExpressShipment : Shipment, ITrackable, IInsurable
     {
 
         private decimal _extraFee;
@@ -52,6 +52,11 @@ namespace CSharpOOP02
             Console.WriteLine($"  Destination  : {Destination.GetFullAddress()}");
             Console.WriteLine($"  EstimatedCost: {EstimatedCost:C}");
 
+        }
+
+        public decimal CalculateInsurance()
+        {
+            return EstimatedCost * 0.08m;
         }
     }
 }

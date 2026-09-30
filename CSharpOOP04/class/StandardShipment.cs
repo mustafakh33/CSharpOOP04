@@ -7,7 +7,7 @@ using System.Text;
 
 namespace CSharpOOP02
 {
-    public class StandardShipment : Shipment, ITrackable
+    public class StandardShipment : Shipment, ITrackable, IInsurable
     {
         public StandardShipment(string trackingCode, string description, decimal weight,  decimal deliveryFee, DeliveryAddress destination) : base(trackingCode, description, weight, deliveryFee, destination)
         {
@@ -32,6 +32,11 @@ namespace CSharpOOP02
             Console.WriteLine($"  DeliveryFee  : {DeliveryFee:C}");
             Console.WriteLine($"  Destination  : {Destination.GetFullAddress()}");
             Console.WriteLine($"  EstimatedCost: {EstimatedCost:C}");
+        }
+
+        public decimal CalculateInsurance()
+        {
+            return EstimatedCost * 0.05m;
         }
     }
 }

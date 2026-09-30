@@ -7,7 +7,7 @@ using System.Text;
 
 namespace CSharpOOP02
 {
-    public class InternationalShipment : Shipment, ITrackable
+    public class InternationalShipment : Shipment, ITrackable, IInsurable
     {
         private string _destinationCountry = string.Empty;
         private decimal _customsFee;
@@ -74,6 +74,11 @@ namespace CSharpOOP02
         public string GetTrackingStatus()
         {
             return $"Shipment {TrackingCode} has been Delivered.";
+        }
+
+        public decimal CalculateInsurance()
+        {
+            return EstimatedCost * 0.12m;
         }
     }
 }
