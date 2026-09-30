@@ -1,12 +1,13 @@
 ﻿using CSharpOOP01;
 using CSharpOOP02.@class;
+using CSharpOOP04.Interface;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CSharpOOP02
 {
-    public class ExpressShipment : Shipment
+    public class ExpressShipment : Shipment, ITrackable
     {
 
         private decimal _extraFee;
@@ -21,6 +22,10 @@ namespace CSharpOOP02
                     _extraFee = value;
                 }
             }
+        }
+        public string GetTrackingStatus()
+        {
+            return $"Shipment {TrackingCode} is Out for Delivery.";
         }
 
         public override decimal EstimatedCost

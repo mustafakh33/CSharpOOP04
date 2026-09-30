@@ -1,12 +1,13 @@
 ﻿using CSharpOOP01;
 using CSharpOOP02.@class;
+using CSharpOOP04.Interface;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace CSharpOOP02
 {
-    public class InternationalShipment : Shipment
+    public class InternationalShipment : Shipment, ITrackable
     {
         private string _destinationCountry = string.Empty;
         private decimal _customsFee;
@@ -68,6 +69,11 @@ namespace CSharpOOP02
             Console.WriteLine($"  Destination        : {Destination.GetFullAddress()}");
             Console.WriteLine($"  EstimatedCost      : {EstimatedCost:C}");
 
+        }
+
+        public string GetTrackingStatus()
+        {
+            return $"Shipment {TrackingCode} has been Delivered.";
         }
     }
 }
