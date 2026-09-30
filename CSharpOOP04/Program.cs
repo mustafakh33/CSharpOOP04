@@ -1,4 +1,9 @@
-﻿namespace CSharpOOP04
+﻿using CSharpOOP01;
+using CSharpOOP02;
+using CSharpOOP02.@class;
+using CSharpOOP04.Interface;
+
+namespace CSharpOOP04
 {
     internal class Program
     {
@@ -25,7 +30,68 @@
             #endregion
 
             #region Part 02 — Practical
+            // Create Delivery Center
+            DeliveryCenter center = new DeliveryCenter("Main Delivery Center");
 
+            // Create Shipments
+            StandardShipment standardShipment = new StandardShipment("SH001", "Laptop", 9m, 50m, new DeliveryAddress()); 
+            ExpressShipment expressShipment = new ExpressShipment("SH002", "Phone", 9m, 25m, new DeliveryAddress(), 30m);
+            InternationalShipment internationalShipment = new InternationalShipment("SH003", "Package", 10m, 100m, new DeliveryAddress(), "Germany", 60m);
+
+            // Add Shipments to DeliveryCenter
+            center.AddShipment(standardShipment);
+            center.AddShipment(expressShipment);
+            center.AddShipment(internationalShipment);
+
+            // Print All Shipment Details
+            Console.WriteLine("==========================================");
+            Console.WriteLine("Delivery Center");
+            Console.WriteLine("==========================================");
+            Console.WriteLine();
+
+            center.PrintAllShipments();
+
+            // Print Tracking Status
+            Console.WriteLine("==========================================");
+            Console.WriteLine("Tracking Status");
+            Console.WriteLine("==========================================");
+            Console.WriteLine();
+
+            center.PrintTrackingStatuses();
+
+            // ITrackable Array
+            ITrackable[] trackableShipments = { standardShipment, expressShipment, internationalShipment };
+            foreach (ITrackable shipment in trackableShipments)
+            {
+                Console.WriteLine(shipment.GetTrackingStatus());
+            }
+
+            // Print Insurance
+            Console.WriteLine();
+            Console.WriteLine("==========================================");
+            Console.WriteLine("Insurance");
+            Console.WriteLine("==========================================");
+            Console.WriteLine();
+
+            Console.WriteLine( $"Standard Shipment Insurance : {standardShipment.CalculateInsurance():0.00} EGP");
+
+            Console.WriteLine( $"Express Shipment Insurance : {expressShipment.CalculateInsurance():0.00} EGP");
+
+            Console.WriteLine( $"International Shipment Insurance : {internationalShipment.CalculateInsurance():0.00} EGP");
+
+
+            // IInsurable Array
+            IInsurable[] insurableShipments = { standardShipment, expressShipment, internationalShipment };
+            foreach (IInsurable shipment in insurableShipments)
+            {
+                Console.WriteLine(
+                    $"Insurance : {shipment.CalculateInsurance():0.00} EGP");
+            }
+
+            // Final Message
+            Console.WriteLine();
+            Console.WriteLine("==========================================");
+            Console.WriteLine("Interface Polymorphism Demonstrated Successfully.");
             #endregion
         }
     }
